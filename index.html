@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/styles.css">
+    <link rel="stylesheet" href="./CSS/fonts.css">
+    <title>GalaxiaPub Bilan</title>
+</head>
+<body>
+    <h1>GalaxiaPub Bilan</h1>
+    <form id="bilanForm">
+        <div class="form-group form-g0">
+            <label for="rank">Quel est le rank du staff ?</label>
+            <select id="rank" name="rank" required>
+                <option value="">Choisi une réponse</option>
+                <option value="Staff">Staff</option>
+                <option value="Haut Staff">Haut Staff</option>
+                <option value="Cadres">Cadres</option>
+                <option value="Direction">Direction</option>
+            </select>
+            <button type="button" class="prev-btn" style="display: none;">Retour</button>
+            <button type="button" class="next-btn">Suivant</button>
+        </div>
+
+        <div class="form-group form-g1" style="display: none;">
+            <label for="role">Quel est son rôle ?</label>
+            <select id="role" name="role"></select>
+            <button type="button" class="prev-btn">Retour</button>
+            <button type="button" class="next-btn">Suivant</button>
+        </div>
+
+        <div class="form-group form-g2" style="display: none;">
+            <label for="name">Qui est le staff ?</label>
+            <input type="text" id="name" name="name" required>
+            <button type="button" class="prev-btn">Retour</button>
+            <button type="button" class="next-btn">Suivant</button>
+        </div>
+
+        <div class="form-group form-g3" style="display: none;">
+            <label for="verifications">Vérifications publicitaires :</label>
+            <input type="number" id="verifications" name="verifications" required>
+            <button type="button" class="prev-btn">Retour</button>
+            <button type="button" class="next-btn">Suivant</button>
+        </div>
+
+        <div class="form-group form-g4" style="display: none;">
+            <label for="tickets">Gestion tickets :</label>
+            <input type="number" id="tickets" name="tickets" required>
+            <button type="button" class="prev-btn">Retour</button>
+            <button type="button" class="next-btn">Suivant</button>
+        </div>
+
+        <div class="form-group form-g5" style="display: none;">
+            <label for="messages">Activité (messages) :</label>
+            <input type="number" id="messages" name="messages" required>
+            <button type="button" class="prev-btn">Retour</button>
+            <button type="button" class="next-btn">Suivant</button>
+        </div>
+
+        <div class="form-group form-g6" style="display: none;">
+            <label for="vocal">Activité (vocal) :</label>
+            <input type="number" id="vocal" name="vocal" required>
+            <button type="button" class="prev-btn">Retour</button>
+            <button type="button" class="next-btn">Suivant</button>
+        </div>
+
+        <div class="form-group form-g7" style="display: none;">
+            <label for="bumps">Bumps :</label>
+            <input type="number" id="bumps" name="bumps" required>
+            <button type="button" class="prev-btn">Retour</button>
+            <button type="button" class="next-btn">Suivant</button>
+        </div>
+
+        <div class="form-group form-g8" style="display: none;">
+            <label for="recruitments">Recrutements :</label>
+            <input type="number" id="recruitments" name="recruitments" required>
+            <button type="button" class="prev-btn">Retour</button>
+            <button type="button" class="next-btn">Suivant</button>
+        </div>
+
+        <div class="form-group form-g9" style="display: none;">
+            <label for="buyers">Trouver un acheteur :</label>
+            <input type="number" id="buyers" name="buyers" required>
+            <button type="button" class="prev-btn">Retour</button>
+            <button type="button" class="next-btn">Suivant</button>
+        </div>
+
+        <div class="form-group form-g10" style="display: none;">
+            <label for="invitations">Invitations :</label>
+            <input type="number" id="invitations" name="invitations" required>
+            <button type="button" class="prev-btn">Retour</button>
+            <button type="button" class="next-btn">Suivant</button>
+        </div>
+
+        <div class="form-group form-g11" style="display: none;">
+            <label for="tours">Tournées Publicitaires :</label>
+            <input type="number" id="tours" name="tours" required>
+            <button type="button" class="prev-btn">Retour</button>
+            <button type="submit" class="submit-btn">Envoyer</button>
+        </div>
+    </form>
+
+    <script src="./JS/roles.js"></script>
+    <script src="./JS/form.js"></script>
+    <script src="./JS/submit.js"></script>
+</body>
+</html>
