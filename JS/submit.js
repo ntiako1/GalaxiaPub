@@ -1,3 +1,4 @@
+function initializeSubmitScript() {
 document.getElementById('bilanForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -58,7 +59,7 @@ document.getElementById('bilanForm').addEventListener('submit', function(event) 
         color: colorEmbed,
     };
 
-    const webhookURL = 'https://discord.com/api/webhooks/1229030459971993601/pK9sV1obPiM1S-Hu5LLsnT5ZFaXdwD3yQI9JUQmBjNZt7w1ccyloZnZoeAeRl_fYxao8';
+    const webhookURL = localStorage.getItem('webhook');
 
     fetch(webhookURL, {
         method: 'POST',
@@ -70,8 +71,8 @@ document.getElementById('bilanForm').addEventListener('submit', function(event) 
     .then(response => {
         if (response.ok) {
             alert("Formulaire soumis avec succès !");
-            form.reset();
-            showGroup(0);
+            localStorage.clear()
+            window.location.href = "./"
         } else {
             throw new Error('Une erreur s\'est produite lors de l\'envoi du formulaire.');
         }
@@ -82,8 +83,8 @@ document.getElementById('bilanForm').addEventListener('submit', function(event) 
     });
 });
 
-// Réinitialiser le formulaire lorsque la page est rechargée
+
 window.onload = function() {
-    form.reset();
-    showGroup(0);
+    localStorage.clear()
 };
+}
