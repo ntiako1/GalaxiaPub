@@ -1,97 +1,102 @@
-*,
-*::before,
-*::after {
+/* styles.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #1a1a1a;
+  color: #f0f0f0;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  color: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-html,
-body {
-  width: 100svw;
-  height: 100svh;
-  background-color: #023876;
+.container {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+}
+
+.content {
+  background-color: #2b2b2b;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+  padding: 20px;
+  text-align: center;
 }
 
 h1 {
-  position: absolute;
-  left: 50%;
-  translate: -50%;
-  font-family: "Oswald", sans-serif;
-  font-size: 2rem;
-  letter-spacing: 2px;
-  text-decoration: underline;
+  color: #00aaff;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 form {
-  position: relative;
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-form .form-group {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  translate: -50% -50%;
-  width: 400px;
-  height: 250px;
-  border: 1px solid #FFF;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
-form .form-group label {
-  font-size: 1.3rem;
-  font-weight: 100;
-  color: #FFF;
-}
-form .form-group select {
-  padding: 10px;
-  background-color: #FCFCFC;
-  color: #000;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  outline: none;
-}
-form .form-group select option {
-  color: #000;
-}
-form .form-group input {
-  padding: 10px;
-  color: #000;
-  border: none;
-  border-radius: 12px;
-  outline: none;
-}
-form .form-group button {
-  position: absolute;
-  bottom: 5%;
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
-  outline: none;
-  cursor: pointer;
-}
-form .form-group .prev-btn {
-  left: 3%;
-  background-color: #FF0000;
-  color: #FFF;
-}
-form .form-group .next-btn,
-form .form-group .submit-btn {
-  right: 3%;
-  background-color: #00ff00;
-  color: #000;
 }
 
-/*# sourceMappingURL=styles.css.map */
+.form-group {
+  margin-bottom: 20px;
+  display: block;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #00aaff;
+}
+
+select, input[type="text"], input[type="number"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #f0f0f0;
+  box-shadow: inset 0 0 5px rgba(0, 170, 255, 0.5);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+select:focus, input[type="text"]:focus, input[type="number"]:focus {
+  outline: none;
+  box-shadow: 0 0 10px #00aaff;
+}
+
+.button-group {
+  display: block;
+  margin-top: 10px;
+}
+
+button {
+  background-color: #005f99;
+  color: #f0f0f0;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  background-color: #004477;
+  box-shadow: 0 0 10px rgba(0, 119, 204, 0.7);
+}
+
+button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.prev-btn {
+  background-color: #005f99;
+}
+
+.prev-btn:hover {
+  background-color: #004477;
+}
+
+.hidden {
+  display: none;
+}
