@@ -4,105 +4,169 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./CSS/styles.css">
-    <link rel="stylesheet" href="./CSS/fonts.css">
-    <title>GalaxiaPub Bilan</title>
+    <title>Galaxia Pub Bilan</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 51.75.25.2 'unsafe-inline'">
 </head>
 <body>
-    <h1>GalaxiaPub Bilan</h1>
-    <form id="bilanForm">
-        <div class="form-group form-g0">
-            <label for="rank">Quel est le rank du staff ?</label>
-            <select id="rank" name="rank" required>
-                <option value="">Choisi une réponse</option>
-                <option value="Staff">Staff</option>
-                <option value="Haut Staff">Haut Staff</option>
-                <option value="Cadres">Cadres</option>
-                <option value="Direction">Direction</option>
-            </select>
+
+<div class="container"> 
+    <h1>Galaxia Pub Bilan</h1>
+    <div id="content" class="content"></div>
+</div>
+
+
+<script src="./JS/roles.js"></script>
+<script src="./JS/form.js"></script>
+<script src="./JS/submit.js"></script>
+
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+        if (localStorage.getItem('passwordValidated')) {
+            loadFormContent();
+        } else {
+            promptPassword();
+        }
+    }); 
+
+    function promptPassword() {
+                const password = prompt('Veuillez entrer le mot de passe :');
+                fetch('http://51.75.25.2:2000/webhook-pswd', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ password })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.success) {
+                        content.innerHTML = `<h1 style="color: red;">${data.message}</h1>`;
+                    } else {
+                        localStorage.setItem('webhook', data.message);
+                        localStorage.setItem('passwordValidated', true);
+                        loadFormContent();
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                });
+    }
+
+    function loadFormContent() {
+        const content = document.getElementById('content');
+        content.innerHTML = `
+<form id="bilanForm">
+    <div class="form-group form-g0">
+        <label for="rank">Quel est le rank du staff ?</label>
+        <select id="rank" name="rank" required>
+            <option value="" disabled selected>Choisissez une réponse</option>
+            <option value="Staff">Staff</option>
+            <option value="Haut Staff">Haut Staff</option>
+            <option value="Cadres">Cadres</option>
+            <option value="Direction">Direction</option>
+        </select>
+        <div class="button-group">
             <button type="button" class="prev-btn" style="display: none;">Retour</button>
             <button type="button" class="next-btn">Suivant</button>
         </div>
-
-        <div class="form-group form-g1" style="display: none;">
-            <label for="role">Quel est son rôle ?</label>
-            <select id="role" name="role"></select>
+    </div>
+    <div class="form-group form-g1" style="display: none;">
+        <label for="role">Quel est son rôle ?</label>
+        <select id="role" name="role"></select>
+        <div class="button-group">
             <button type="button" class="prev-btn">Retour</button>
             <button type="button" class="next-btn">Suivant</button>
         </div>
-
-        <div class="form-group form-g2" style="display: none;">
-            <label for="name">Qui est le staff ?</label>
-            <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group form-g2" style="display: none;">
+        <label for="name">Qui est le staff ?</label>
+        <input type="text" id="name" name="name" required>
+        <div class="button-group">
             <button type="button" class="prev-btn">Retour</button>
             <button type="button" class="next-btn">Suivant</button>
         </div>
-
-        <div class="form-group form-g3" style="display: none;">
-            <label for="verifications">Vérifications publicitaires :</label>
-            <input type="number" id="verifications" name="verifications" required>
+    </div>
+    <div class="form-group form-g3" style="display: none;">
+        <label for="verifications">Vérifications publicitaires :</label>
+        <input type="number" id="verifications" name="verifications" required>
+        <div class="button-group">
             <button type="button" class="prev-btn">Retour</button>
             <button type="button" class="next-btn">Suivant</button>
         </div>
-
-        <div class="form-group form-g4" style="display: none;">
-            <label for="tickets">Gestion tickets :</label>
-            <input type="number" id="tickets" name="tickets" required>
+    </div>
+    <div class="form-group form-g4" style="display: none;">
+        <label for="tickets">Gestion tickets :</label>
+        <input type="number" id="tickets" name="tickets" required>
+        <div class="button-group">
             <button type="button" class="prev-btn">Retour</button>
             <button type="button" class="next-btn">Suivant</button>
         </div>
-
-        <div class="form-group form-g5" style="display: none;">
-            <label for="messages">Activité (messages) :</label>
-            <input type="number" id="messages" name="messages" required>
+    </div>
+    <div class="form-group form-g5" style="display: none;">
+        <label for="messages">Activité (messages) :</label>
+        <input type="number" id="messages" name="messages" required>
+        <div class="button-group">
             <button type="button" class="prev-btn">Retour</button>
             <button type="button" class="next-btn">Suivant</button>
         </div>
-
-        <div class="form-group form-g6" style="display: none;">
-            <label for="vocal">Activité (vocal) :</label>
-            <input type="number" id="vocal" name="vocal" required>
+    </div>
+    <div class="form-group form-g6" style="display: none;">
+        <label for="vocal">Activité (vocal) :</label>
+        <input type="number" id="vocal" name="vocal" required>
+        <div class="button-group">
             <button type="button" class="prev-btn">Retour</button>
             <button type="button" class="next-btn">Suivant</button>
         </div>
-
-        <div class="form-group form-g7" style="display: none;">
-            <label for="bumps">Bumps :</label>
-            <input type="number" id="bumps" name="bumps" required>
+    </div>
+    <div class="form-group form-g7" style="display: none;">
+        <label for="bumps">Bumps :</label>
+        <input type="number" id="bumps" name="bumps" required>
+        <div class="button-group">
             <button type="button" class="prev-btn">Retour</button>
             <button type="button" class="next-btn">Suivant</button>
         </div>
-
-        <div class="form-group form-g8" style="display: none;">
-            <label for="recruitments">Recrutements :</label>
-            <input type="number" id="recruitments" name="recruitments" required>
+    </div>
+    <div class="form-group form-g8" style="display: none;">
+        <label for="recruitments">Recrutements :</label>
+        <input type="number" id="recruitments" name="recruitments" required>
+        <div class="button-group">
             <button type="button" class="prev-btn">Retour</button>
             <button type="button" class="next-btn">Suivant</button>
         </div>
-
-        <div class="form-group form-g9" style="display: none;">
-            <label for="buyers">Trouver un acheteur :</label>
-            <input type="number" id="buyers" name="buyers" required>
+    </div>
+    <div class="form-group form-g9" style="display: none;">
+        <label for="buyers">Trouver un acheteur :</label>
+        <input type="number" id="buyers" name="buyers" required>
+        <div class="button-group">
             <button type="button" class="prev-btn">Retour</button>
             <button type="button" class="next-btn">Suivant</button>
         </div>
-
-        <div class="form-group form-g10" style="display: none;">
-            <label for="invitations">Invitations :</label>
-            <input type="number" id="invitations" name="invitations" required>
+    </div>
+    <div class="form-group form-g10" style="display: none;">
+        <label for="invitations">Invitations :</label>
+        <input type="number" id="invitations" name="invitations" required>
+        <div class="button-group">
             <button type="button" class="prev-btn">Retour</button>
             <button type="button" class="next-btn">Suivant</button>
         </div>
-
-        <div class="form-group form-g11" style="display: none;">
-            <label for="tours">Tournées Publicitaires :</label>
-            <input type="number" id="tours" name="tours" required>
+    </div>
+    <div class="form-group form-g11" style="display: none;">
+        <label for="tours">Tournées Publicitaires :</label>
+        <input type="number" id="tours" name="tours" required>
+        <div class="button-group">
             <button type="button" class="prev-btn">Retour</button>
             <button type="submit" class="submit-btn">Envoyer</button>
         </div>
-    </form>
+    </div>
+    
+</form>
+        `;
+        initializeSubmitScript(); 
+        initializeFormScript();
+    }
+</script>
 
-    <script src="./JS/roles.js"></script>
-    <script src="./JS/form.js"></script>
-    <script src="./JS/submit.js"></script>
 </body>
 </html>
